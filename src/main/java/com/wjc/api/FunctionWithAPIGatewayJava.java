@@ -34,25 +34,27 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 		try {
 			String temp;
 			JSONObject jsonObject = (JSONObject) parser.parse(reader);
-			
+
 			temp = RequestUtil.getQueryParam(jsonObject, "name");
 			if (temp != null) {
 				name = temp;
 			}
-			
+
 			temp = RequestUtil.getPathParam(jsonObject, "proxy");
 			if (temp != null) {
 				city = temp;
 			}
-			
+
 			temp = RequestUtil.getHeader(jsonObject, "day");
 			if (temp != null) {
 				day = temp;
 			}
-			
-			temp = RequestUtil.getBody(jsonObject, "time");
-			if (temp != null) {
-				time = temp;
+
+			if (jsonObject.get("body") != null) {
+				JSONObject body = (JSONObject) parser.parse((String) jsonObject.get("body"));
+				if (body.get("time") != null) {
+					time = (String) body.get("time");
+				}
 			}
 
 			String greeting = "Good " + time + ", " + name + " of " + city + ". ";

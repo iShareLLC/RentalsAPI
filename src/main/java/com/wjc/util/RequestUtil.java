@@ -27,10 +27,4 @@ public final class RequestUtil {
 		JSONObject qps = (JSONObject) jsonObject.get("headers");
 		return qps == null ? null : (String) qps.get(headerName);
 	}
-
-	@Nullable
-	public static String getBody(@Nonnull JSONObject jsonObject, @Nonnull String bodyName) {
-		JSONObject qps = (JSONObject) jsonObject.get("body");
-		return qps == null ? null : (String) qps.get(bodyName);
-	}
 }
