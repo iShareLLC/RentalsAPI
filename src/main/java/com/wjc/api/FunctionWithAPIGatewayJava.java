@@ -21,7 +21,7 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
 		LambdaLogger logger = context.getLogger();
-		logger.log("Loading Java Lambda handler of ProxyWithStream");
+		logger.log("Loading Java Lambda handler of FunctionWithAPIGatewayJava");
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		JSONObject responseJson = new JSONObject();
@@ -34,6 +34,7 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 		try {
 			String temp;
 			JSONObject jsonObject = (JSONObject) parser.parse(reader);
+			logger.log("Input is " + jsonObject.toJSONString());
 
 			temp = RequestUtil.getQueryParam(jsonObject, "name");
 			if (temp != null) {
@@ -62,7 +63,6 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 				greeting += "Happy " + day + "!";
 
 			JSONObject responseBody = new JSONObject();
-			responseBody.put("input", jsonObject.toJSONString());
 			responseBody.put("message", greeting);
 
 			JSONObject headerJson = new JSONObject();
