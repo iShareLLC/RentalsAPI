@@ -4,6 +4,7 @@ public class Request {
 
 	public int id;
 	public String time;
+	public boolean fromIos = true;
 	
 	public Request() {
 	}

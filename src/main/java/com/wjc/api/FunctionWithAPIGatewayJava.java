@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.BufferedReader;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+import com.wjc.util.RequestUtil;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
@@ -31,33 +32,27 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 		String responseCode = "200";
 
 		try {
-			JSONObject event = (JSONObject) parser.parse(reader);
-			if (event.get("queryStringParameters") != null) {
-				JSONObject qps = (JSONObject) event.get("queryStringParameters");
-				if (qps.get("name") != null) {
-					name = (String) qps.get("name");
-				}
+			String temp;
+			JSONObject jsonObject = (JSONObject) parser.parse(reader);
+			
+			temp = RequestUtil.getQueryParam(jsonObject, "name");
+			if (temp != null) {
+				name = temp;
 			}
-
-			if (event.get("pathParameters") != null) {
-				JSONObject pps = (JSONObject) event.get("pathParameters");
-				if (pps.get("proxy") != null) {
-					city = (String) pps.get("proxy");
-				}
+			
+			temp = RequestUtil.getPathParam(jsonObject, "proxy");
+			if (temp != null) {
+				city = temp;
 			}
-
-			if (event.get("headers") != null) {
-				JSONObject hps = (JSONObject) event.get("headers");
-				if (hps.get("day") != null) {
-					day = (String) hps.get("day");
-				}
+			
+			temp = RequestUtil.getHeader(jsonObject, "day");
+			if (temp != null) {
+				day = temp;
 			}
-
-			if (event.get("body") != null) {
-				JSONObject body = (JSONObject) parser.parse((String) event.get("body"));
-				if (body.get("time") != null) {
-					time = (String) body.get("time");
-				}
+			
+			temp = RequestUtil.getBody(jsonObject, "time");
+			if (temp != null) {
+				time = temp;
 			}
 
 			String greeting = "Good " + time + ", " + name + " of " + city + ". ";
@@ -65,6 +60,7 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 				greeting += "Happy " + day + "!";
 
 			JSONObject responseBody = new JSONObject();
+			responseBody.put("input", jsonObject.toJSONString());
 			responseBody.put("message", greeting);
 
 			JSONObject headerJson = new JSONObject();
