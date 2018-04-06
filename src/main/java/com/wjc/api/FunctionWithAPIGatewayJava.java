@@ -12,12 +12,12 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
 public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 	JSONParser parser = new JSONParser();
 
+	@SuppressWarnings("unchecked")
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
 		LambdaLogger logger = context.getLogger();
@@ -73,9 +73,10 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 			responseJson.put("headers", headerJson);
 			responseJson.put("body", responseBody.toString());
 
-		} catch (ParseException pex) {
+		} catch (Exception e) {
 			responseJson.put("statusCode", "400");
-			responseJson.put("exception", pex);
+			responseJson.put("exception", e);
+			logger.log("Exception: " + e.getMessage());
 		}
 
 		logger.log(responseJson.toJSONString());

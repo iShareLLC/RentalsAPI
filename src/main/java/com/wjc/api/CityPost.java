@@ -13,17 +13,18 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
-public class UserPost implements RequestStreamHandler {
+public class CityPost implements RequestStreamHandler {
 	JSONParser parser = new JSONParser();
 
+	@SuppressWarnings("unchecked")
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		JSONObject responseJson = new JSONObject();
-		String name = "you";
-		String city = "World";
-		String time = "day";
-		String day = null;
+		String name = "";
+		String city = "";
+		String time = "";
+		String day = "";
 		String responseCode = "200";
 
 		try {
@@ -35,11 +36,10 @@ public class UserPost implements RequestStreamHandler {
 				}
 			}
 
-			// TODO: Add to figure out how to add/parse path parameters
 			if (event.get("pathParameters") != null) {
 				JSONObject pps = (JSONObject) event.get("pathParameters");
-				if (pps.get("proxy") != null) {
-					city = (String) pps.get("proxy");
+				if (pps.get("city") != null) {
+					city = (String) pps.get("city");
 				}
 			}
 
@@ -57,9 +57,7 @@ public class UserPost implements RequestStreamHandler {
 				}
 			}
 
-			String greeting = "From UserPost: Good " + time + ", " + name + " of " + city + ". ";
-			if (day != null && day != "")
-				greeting += "Happy " + day + "!";
+			String greeting = "From UserPost: Time is " + time + " name is " + name + " city is " + city + " day is " + day;
 
 			JSONObject responseBody = new JSONObject();
 			responseBody.put("message", greeting);
