@@ -1,8 +1,7 @@
 package com.wjc.api;
 
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
@@ -17,7 +16,6 @@ public class SavePersonHandler implements RequestHandler<PersonRequest, PersonRe
 
 	private DynamoDB dynamoDb;
 	private String DYNAMODB_TABLE_NAME = "Person";
-	private Regions REGION = Regions.US_EAST_1;
 
 	public PersonResponse handleRequest(PersonRequest personRequest, Context context) {
 
@@ -38,8 +36,7 @@ public class SavePersonHandler implements RequestHandler<PersonRequest, PersonRe
 	}
 
 	private void initDynamoDbClient() {
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient();
-		client.setRegion(Region.getRegion(REGION));
+		AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 		dynamoDb = new DynamoDB(client);
 	}
 }
