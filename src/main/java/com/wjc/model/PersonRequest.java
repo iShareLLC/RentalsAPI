@@ -6,7 +6,12 @@ public class PersonRequest {
 	public String firstName;
 	public String lastName;
 	public int age;
-	public String address;
+	public Address address;
      
-    // standard getters and setters
+	public class Address {
+		
+		public String country;
+		public String state;
+		public String city;
+	}
 }
