@@ -1,4 +1,4 @@
-package com.wjc.api;
+package com.wjc.handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
-public class CityPost implements RequestStreamHandler {
+public class CityPostHandler implements RequestStreamHandler {
 	JSONParser parser = new JSONParser();
 
 	@SuppressWarnings("unchecked")

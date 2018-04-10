@@ -1,4 +1,4 @@
-package com.wjc.api;
+package com.wjc.handler;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.TableKeysAndAttributes;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.wjc.constant.Constant;
 import com.wjc.model.PersonRequest;
 import com.wjc.model.PersonResponse;
 import com.wjc.util.DynamoDBUtil;
@@ -19,13 +20,10 @@ import com.wjc.util.DynamoDBUtil;
  */
 public class GetPersonsHandler implements RequestHandler<PersonRequest, PersonResponse> {
 
-	private DynamoDB dynamoDB;
-	private String DYNAMODB_TABLE_NAME = "Person";
-
 	public PersonResponse handleRequest(PersonRequest personRequest, Context context) {
-		dynamoDB = DynamoDBUtil.getDynamoDB();
+		DynamoDB dynamoDB = DynamoDBUtil.getDynamoDB();
 
-		TableKeysAndAttributes attributes = new TableKeysAndAttributes(DYNAMODB_TABLE_NAME);
+		TableKeysAndAttributes attributes = new TableKeysAndAttributes(Constant.DYNAMODB_TABLE_NAME);
 		attributes.addHashOnlyPrimaryKeys("id", 1, 2);
 
 		BatchGetItemOutcome outcome = dynamoDB.batchGetItem(attributes);

@@ -1,4 +1,4 @@
-package com.wjc.api;
+package com.wjc.handler;
 
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.model.Request;
