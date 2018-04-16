@@ -1,4 +1,4 @@
-package com.wjc.handler;
+package com.wjc.handler.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,60 +7,57 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.BufferedReader;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.wjc.util.RequestUtil;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
-public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
+public class CityPostHandler implements RequestStreamHandler {
 	JSONParser parser = new JSONParser();
 
 	@SuppressWarnings("unchecked")
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
-		LambdaLogger logger = context.getLogger();
-		logger.log("Loading Java Lambda handler of FunctionWithAPIGatewayJava");
-
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		JSONObject responseJson = new JSONObject();
-		String name = "you";
-		String city = "World";
-		String time = "day";
-		String day = null;
+		String name = "";
+		String city = "";
+		String time = "";
+		String day = "";
 		String responseCode = "200";
 
 		try {
-			String temp;
-			JSONObject jsonObject = (JSONObject) parser.parse(reader);
-			logger.log("Input is " + jsonObject.toJSONString());
-
-			temp = RequestUtil.getQueryParam(jsonObject, "name");
-			if (temp != null) {
-				name = temp;
+			JSONObject event = (JSONObject) parser.parse(reader);
+			if (event.get("queryStringParameters") != null) {
+				JSONObject qps = (JSONObject) event.get("queryStringParameters");
+				if (qps.get("name") != null) {
+					name = (String) qps.get("name");
+				}
 			}
 
-			temp = RequestUtil.getPathParam(jsonObject, "proxy");
-			if (temp != null) {
-				city = temp;
+			if (event.get("pathParameters") != null) {
+				JSONObject pps = (JSONObject) event.get("pathParameters");
+				if (pps.get("city") != null) {
+					city = (String) pps.get("city");
+				}
 			}
 
-			temp = RequestUtil.getHeader(jsonObject, "day");
-			if (temp != null) {
-				day = temp;
+			if (event.get("headers") != null) {
+				JSONObject hps = (JSONObject) event.get("headers");
+				if (hps.get("day") != null) {
+					day = (String) hps.get("day");
+				}
 			}
 
-			if (jsonObject.get("body") != null) {
-				JSONObject body = (JSONObject) parser.parse((String) jsonObject.get("body"));
+			if (event.get("body") != null) {
+				JSONObject body = (JSONObject) parser.parse((String) event.get("body"));
 				if (body.get("time") != null) {
 					time = (String) body.get("time");
 				}
 			}
 
-			String greeting = "Good " + time + ", " + name + " of " + city + ". ";
-			if (day != null && day != "")
-				greeting += "Happy " + day + "!";
+			String greeting = "From UserPost: Time is " + time + " name is " + name + " city is " + city + " day is " + day;
 
 			JSONObject responseBody = new JSONObject();
 			responseBody.put("message", greeting);
@@ -73,13 +70,11 @@ public class FunctionWithAPIGatewayJava implements RequestStreamHandler {
 			responseJson.put("headers", headerJson);
 			responseJson.put("body", responseBody.toString());
 
-		} catch (Exception e) {
+		} catch (ParseException pex) {
 			responseJson.put("statusCode", "400");
-			responseJson.put("exception", e);
-			logger.log("Exception: " + e.getMessage());
+			responseJson.put("exception", pex);
 		}
 
-		logger.log(responseJson.toJSONString());
 		OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
 		writer.write(responseJson.toJSONString());
 		writer.close();

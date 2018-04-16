@@ -1,4 +1,4 @@
-package com.wjc.handler;
+package com.wjc.handler.test;
 
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
@@ -8,8 +8,8 @@ import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.constant.Constant;
-import com.wjc.model.PersonRequest;
-import com.wjc.model.PersonResponse;
+import com.wjc.model.test.PersonRequest;
+import com.wjc.model.test.PersonResponse;
 import com.wjc.util.DynamoDBUtil;
 
 /**

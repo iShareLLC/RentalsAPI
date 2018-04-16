@@ -1,4 +1,4 @@
-package com.wjc.handler;
+package com.wjc.handler.test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,8 @@ import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.constant.Constant;
-import com.wjc.model.PersonResponse;
-import com.wjc.model.UpdatePersonRequest;
+import com.wjc.model.test.PersonResponse;
+import com.wjc.model.test.UpdatePersonRequest;
 
 /**
  * DynamoDB updateItem demo

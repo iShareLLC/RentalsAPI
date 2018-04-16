@@ -1,6 +1,6 @@
 package com.wjc.main;
 import com.google.gson.Gson;
-import com.wjc.model.Request;
+import com.wjc.model.test.Request;
 
 public class Main {
 

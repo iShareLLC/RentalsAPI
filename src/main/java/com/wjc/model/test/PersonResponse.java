@@ -1,4 +1,4 @@
-package com.wjc.model;
+package com.wjc.model.test;
 
 import javax.annotation.Nonnull;
 

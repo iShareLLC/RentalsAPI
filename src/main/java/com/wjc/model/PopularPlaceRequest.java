@@ -1,6 +1,6 @@
 package com.wjc.model;
 
-public class GetNeighborhoodRequest {
+public class PopularPlaceRequest {
 
 	private String city;
 

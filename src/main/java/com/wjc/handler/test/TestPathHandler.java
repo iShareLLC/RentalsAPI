@@ -1,8 +1,8 @@
-package com.wjc.handler;
+package com.wjc.handler.test;
 
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.model.Request;
-import com.wjc.model.Response;
+import com.wjc.model.test.Request;
+import com.wjc.model.test.Response;
 import com.amazonaws.services.lambda.runtime.Context; 
 
 /**

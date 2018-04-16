@@ -1,4 +1,4 @@
-package com.wjc.handler;
+package com.wjc.handler.test;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import com.amazonaws.services.dynamodbv2.document.TableKeysAndAttributes;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.constant.Constant;
-import com.wjc.model.PersonRequest;
-import com.wjc.model.PersonResponse;
+import com.wjc.model.test.PersonRequest;
+import com.wjc.model.test.PersonResponse;
 import com.wjc.util.DynamoDBUtil;
 
 /**
