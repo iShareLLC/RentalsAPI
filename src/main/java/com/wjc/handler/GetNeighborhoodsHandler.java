@@ -25,7 +25,7 @@ public class GetNeighborhoodsHandler implements RequestHandler<NeighborhoodReque
 		LambdaLogger logger = context.getLogger();
 
 		try {
-			logger.log("GetNeighborhoodsHandler: received request: " + request.getCity() + request.getClient()
+			logger.log("GetNeighborhoodsHandler: " + request.getCity() + request.getClient()
 					+ request.getVersion());
 			AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 			ScanRequest scanRequest = new ScanRequest().withTableName("Neighborhoods");
