@@ -13,9 +13,9 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.util.StringUtils;
-import com.wjc.model.NeighborhoodRequest;
-import com.wjc.model.NeighborhoodResponse;
-import com.wjc.model.ResponseError;
+import com.wjc.request.NeighborhoodRequest;
+import com.wjc.response.NeighborhoodResponse;
+import com.wjc.response.ResponseError;
 
 public class GetNeighborhoodsHandler implements RequestHandler<NeighborhoodRequest, NeighborhoodResponse> {
 
@@ -33,10 +33,12 @@ public class GetNeighborhoodsHandler implements RequestHandler<NeighborhoodReque
 			ScanResult result = client.scan(scanRequest);
 			for (Map<String, AttributeValue> item : result.getItems()) {
 				String chineseName = item.get("Chinese Name").getS();
-				if (!StringUtils.isNullOrEmpty(chineseName)) {
+				if (StringUtils.hasValue(chineseName)) {
 					neighborhoods.add(chineseName);
-				} else {
-					neighborhoods.add(item.get("Name").getS());
+				}
+				String name = item.get("Name").getS();
+				if (StringUtils.hasValue(name)) {
+					neighborhoods.add(name);
 				}
 			}
 

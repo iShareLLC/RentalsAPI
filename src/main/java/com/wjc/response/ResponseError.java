@@ -1,4 +1,4 @@
-package com.wjc.model;
+package com.wjc.response;
 
 /**
  * Encapsulates a response error

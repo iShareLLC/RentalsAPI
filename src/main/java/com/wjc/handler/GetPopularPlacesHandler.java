@@ -6,8 +6,8 @@ import java.util.List;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.model.PopularPlaceResponse;
-import com.wjc.model.PopularPlaceRequest;
+import com.wjc.request.PopularPlaceRequest;
+import com.wjc.response.PopularPlaceResponse;
 
 public class GetPopularPlacesHandler implements RequestHandler<PopularPlaceRequest, List<PopularPlaceResponse>> {
 
