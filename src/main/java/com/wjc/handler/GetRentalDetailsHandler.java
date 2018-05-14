@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.wjc.constant.RentalType;
 import com.wjc.request.RentalDetailRequest;
 import com.wjc.response.RentalDetailResponse;
 
@@ -27,9 +28,9 @@ public class GetRentalDetailsHandler implements RequestHandler<RentalDetailReque
 		imageUrls.add("http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg");
 		
 		Map<String, List<String>> prices = new HashMap<>();
-		prices.put("主卧", Arrays.asList("$1,000/月", "$300/周", "$60/天"));
-		prices.put("次卧", Arrays.asList("$850/月", "$250/周", "$50/天"));
-		prices.put("客厅", Arrays.asList("$560/月", "$150/周"));
+		prices.put(RentalType.ENTIRE_UNIT.displayName(), Arrays.asList("$1,000/月", "$300/周", "$60/天"));
+		prices.put(RentalType.GUEST_ROOM.displayName(), Arrays.asList("$850/月", "$250/周", "$50/天"));
+		prices.put(RentalType.LIVING_ROOM.displayName(), Arrays.asList("$560/月", "$150/周"));
 		
 		List<String> highlights = Arrays.asList("空调", "游泳池", "健身房", "热水", "工作台");
 		
