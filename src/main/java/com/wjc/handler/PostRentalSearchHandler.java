@@ -1,8 +1,10 @@
 package com.wjc.handler;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.ItemCollection;
@@ -12,6 +14,7 @@ import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.wjc.constant.RentalType;
 import com.wjc.request.RentalSearchRequest;
 import com.wjc.response.RentalSearchResponse;
 import com.wjc.util.DynamoDBUtil;
@@ -21,7 +24,7 @@ public class PostRentalSearchHandler implements RequestHandler<RentalSearchReque
 	@Override
 	public List<RentalSearchResponse> handleRequest(RentalSearchRequest input, Context context) {
 		List<RentalSearchResponse> responses = new ArrayList<>();
-		
+
 		Table table = DynamoDBUtil.getDynamoDBTable("NewYorkRentals");
 
 		QuerySpec spec = new QuerySpec().withKeyConditionExpression("Neighborhood = :v_neighborhood")
@@ -31,22 +34,42 @@ public class PostRentalSearchHandler implements RequestHandler<RentalSearchReque
 		Iterator<Item> iterator = items.iterator();
 		Item item = null;
 		RentalSearchResponse response = null;
-		
+
 		while (iterator.hasNext()) {
 			item = iterator.next();
 			String titlePostTime = item.getString("Title|PostTime");
 			String title = titlePostTime.substring(0, titlePostTime.indexOf("|"));
-			Object price = item.getMap("Price").get("EntireUnit");
-			String displayPrice = price == null ? "" : price.toString();
-			response = new RentalSearchResponse.Builder()
-					.displayPrice(displayPrice)
-					.neighborhood(item.getString("Neighborhood"))
-					.title(title)
-					.description(item.getString("Description"))
-					.build();
+			String displayPrice = matchPrice(item, input);
+			if (displayPrice == null || displayPrice.isEmpty()) {
+				continue;
+			}
+			response = new RentalSearchResponse.Builder().displayPrice(displayPrice)
+					.neighborhood(item.getString("Neighborhood")).title(title)
+					.description(item.getString("Description")).build();
 			responses.add(response);
 		}
 
 		return responses;
+	}
+
+	// Return display price if this satisfy price filter condition
+	private String matchPrice(Item item, RentalSearchRequest input) {
+		List<RentalType> rentalTypes = input.getRentalTypes();
+		for (RentalType rentalType : rentalTypes) {
+			Map<String, Object> priceMap = item.getMap(rentalType.dbName());
+			if (priceMap == null || priceMap.isEmpty()) {
+				continue;
+			}
+			BigDecimal monthlyPrice = (BigDecimal) priceMap.get("m");
+			if (monthlyPrice == null) {
+				continue;
+			}
+			float priceFloat = monthlyPrice.floatValue();
+			if (priceFloat >= input.getMinPrice() && priceFloat <= input.getMaxPrice()) {
+				return "$" + priceFloat + "/月";
+			}
+		}
+
+		return null;
 	}
 }
