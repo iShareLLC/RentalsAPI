@@ -17,10 +17,10 @@ public class Main {
 		
 		List<RentalType> rentalTypes = new ArrayList<>();
 		rentalTypes.add(RentalType.ENTIRE_UNIT);
-		rentalTypes.add(RentalType.GUEST_BEDROOM);
+		rentalTypes.add(RentalType.GUEST_ROOM);
 		
 		RentalSearchRequest request = new RentalSearchRequest.Builder()
-				.neighborhood("midtown")
+				.neighborhood("金融区")
 				.startDate("2018-05-02")
 				.duration(3)
 				.durationUnit(DurationUnit.MONTH)
