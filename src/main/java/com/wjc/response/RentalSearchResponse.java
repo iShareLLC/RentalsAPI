@@ -6,6 +6,8 @@ public class RentalSearchResponse {
 	private String neighborhood;
 	private String title;
 	private String description;
+	private int statusCode;
+	private String message;
 
 	public String getDisplayPrice() {
 		return displayPrice;
@@ -39,11 +41,29 @@ public class RentalSearchResponse {
 		this.description = description;
 	}
 
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public static class Builder {
 		private String displayPrice;
 		private String neighborhood;
 		private String title;
 		private String description;
+		private int statusCode;
+		private String message;
 
 		public Builder displayPrice(String displayPrice) {
 			this.displayPrice = displayPrice;
@@ -65,6 +85,16 @@ public class RentalSearchResponse {
 			return this;
 		}
 
+		public Builder statusCode(int statusCode) {
+			this.statusCode = statusCode;
+			return this;
+		}
+
+		public Builder message(String message) {
+			this.message = message;
+			return this;
+		}
+
 		public RentalSearchResponse build() {
 			return new RentalSearchResponse(this);
 		}
@@ -75,5 +105,7 @@ public class RentalSearchResponse {
 		this.neighborhood = builder.neighborhood;
 		this.title = builder.title;
 		this.description = builder.description;
+		this.statusCode = builder.statusCode;
+		this.message = builder.message;
 	}
 }

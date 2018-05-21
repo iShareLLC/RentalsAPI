@@ -18,11 +18,14 @@ public final class RentalDetailResponse {
 	private boolean includeGas;
 	private boolean allowCat;
 	private boolean allowDog;
+
 	private boolean noSmoking;
 	private boolean hasDoorman;
 	private boolean hasWasher;
 	private boolean hasDryer;
 	private List<String> highlights;
+	private int statusCode;
+	private String message;
 	
 	// One row for subway, no matter how many lines (A/B/C/1) we have
 	// One possible row for Path
@@ -184,6 +187,22 @@ public final class RentalDetailResponse {
 		this.transpotation = transpotation;
 	}
 
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	// TODO: add info for contacting host
 
 	public static class Builder {
@@ -206,6 +225,8 @@ public final class RentalDetailResponse {
 		private boolean hasDryer;
 		private List<String> highlights;
 		private Map<String, String> transpotation;
+		private int statusCode;
+		private String message;
 
 		public Builder imageUrls(List<String> imageUrls) {
 			this.imageUrls = imageUrls;
@@ -301,6 +322,16 @@ public final class RentalDetailResponse {
 			this.transpotation = transpotation;
 			return this;
 		}
+		
+		public Builder statusCode(int statusCode) {
+			this.statusCode = statusCode;
+			return this;
+		}
+		
+		public Builder message(String message) {
+			this.message = message;
+			return this;
+		}
 
 		public RentalDetailResponse build() {
 			return new RentalDetailResponse(this);
@@ -327,5 +358,7 @@ public final class RentalDetailResponse {
 		this.hasDryer = builder.hasDryer;
 		this.highlights = builder.highlights;
 		this.transpotation = builder.transpotation;
+		this.statusCode = builder.statusCode;
+		this.message = builder.message;
 	}
 }

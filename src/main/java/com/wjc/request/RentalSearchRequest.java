@@ -8,15 +8,24 @@ import com.wjc.constant.RentalType;
 public class RentalSearchRequest {
 
 	private String neighborhood;
-	// ISO 8601: YYYY-MM-DD
-	private String startDate;
+	// Unix epoch timestamp in milliseconds
+	private long startDateMillis;
 	private int duration;
 	private DurationUnit durationUnit;
 	private List<RentalType> rentalTypes;
 	private float minPrice;
 	private float maxPrice;
-	
-	public RentalSearchRequest() {}
+	/**
+	 * Start index of the results to return
+	 */
+	private int start;
+	/**
+	 * The maximum number of results to return
+	 */
+	private int limit;
+
+	public RentalSearchRequest() {
+	}
 
 	public String getNeighborhood() {
 		return neighborhood;
@@ -26,12 +35,12 @@ public class RentalSearchRequest {
 		this.neighborhood = neighborhood;
 	}
 
-	public String getStartDate() {
-		return startDate;
+	public long getStartDateMillis() {
+		return startDateMillis;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setStartDateMillis(long startDateMillis) {
+		this.startDateMillis = startDateMillis;
 	}
 
 	public int getDuration() {
@@ -74,22 +83,40 @@ public class RentalSearchRequest {
 		this.maxPrice = maxPrice;
 	}
 
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
 	public static class Builder {
 		private String neighborhood;
-		private String startDate;
+		private long startDateMillis;
 		private int duration;
 		private DurationUnit durationUnit;
 		private List<RentalType> rentalTypes;
 		private float minPrice;
 		private float maxPrice;
+		private int start;
+		private int limit;
 
 		public Builder neighborhood(String neighborhood) {
 			this.neighborhood = neighborhood;
 			return this;
 		}
 
-		public Builder startDate(String startDate) {
-			this.startDate = startDate;
+		public Builder startDateMillis(long startDateMillis) {
+			this.startDateMillis = startDateMillis;
 			return this;
 		}
 
@@ -118,6 +145,16 @@ public class RentalSearchRequest {
 			return this;
 		}
 
+		public Builder start(int start) {
+			this.start = start;
+			return this;
+		}
+
+		public Builder limit(int limit) {
+			this.limit = limit;
+			return this;
+		}
+
 		public RentalSearchRequest build() {
 			return new RentalSearchRequest(this);
 		}
@@ -125,11 +162,13 @@ public class RentalSearchRequest {
 
 	private RentalSearchRequest(Builder builder) {
 		this.neighborhood = builder.neighborhood;
-		this.startDate = builder.startDate;
+		this.startDateMillis = builder.startDateMillis;
 		this.duration = builder.duration;
 		this.durationUnit = builder.durationUnit;
 		this.rentalTypes = builder.rentalTypes;
 		this.minPrice = builder.minPrice;
 		this.maxPrice = builder.maxPrice;
+		this.start = builder.start;
+		this.limit = builder.limit;
 	}
 }

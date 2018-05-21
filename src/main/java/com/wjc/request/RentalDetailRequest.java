@@ -6,16 +6,16 @@ public final class RentalDetailRequest {
 	private String city;
 	private String neighborhood;
 	private String title;
-	// ISO 8601: 2018-04-19T01:55:03.952-04:00
-	private String postTime;
+	// Unix epoch timestamp in milliseconds
+	private long postTimeMillis;
 	
 	public RentalDetailRequest() {}
 	
-	public RentalDetailRequest(String city, String neighborhood, String title, String postTime) {
+	public RentalDetailRequest(String city, String neighborhood, String title, long postTimeMillis) {
 		this.city = city;
 		this.neighborhood = neighborhood;
 		this.title = title;
-		this.postTime = postTime;
+		this.postTimeMillis = postTimeMillis;
 	}
 	
 	public String getCity() {
@@ -36,11 +36,12 @@ public final class RentalDetailRequest {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getPostTime() {
-		return postTime;
+
+	public long getPostTimeMillis() {
+		return postTimeMillis;
 	}
-	public void setPostTime(String postTime) {
-		this.postTime = postTime;
+
+	public void setPostTimeMillis(long postTimeMillis) {
+		this.postTimeMillis = postTimeMillis;
 	}
-	
 }
