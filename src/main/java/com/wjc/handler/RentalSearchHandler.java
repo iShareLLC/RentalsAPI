@@ -1,7 +1,6 @@
 package com.wjc.handler;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,14 +15,17 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.constant.RentalType;
 import com.wjc.request.RentalSearchRequest;
+import com.wjc.response.RentalCard;
+import com.wjc.response.RentalSearchData;
 import com.wjc.response.RentalSearchResponse;
 import com.wjc.util.DynamoDBUtil;
 
-public class PostRentalSearchHandler implements RequestHandler<RentalSearchRequest, List<RentalSearchResponse>> {
+public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, RentalSearchResponse> {
 
 	@Override
-	public List<RentalSearchResponse> handleRequest(RentalSearchRequest input, Context context) {
-		List<RentalSearchResponse> responses = new ArrayList<>();
+	public RentalSearchResponse handleRequest(RentalSearchRequest input, Context context) {
+		RentalSearchData data = new RentalSearchData();
+		data.setTotalCount(100);
 
 		Table table = DynamoDBUtil.getDynamoDBTable("NewYorkRentals");
 
@@ -33,7 +35,7 @@ public class PostRentalSearchHandler implements RequestHandler<RentalSearchReque
 		ItemCollection<QueryOutcome> items = table.query(spec);
 		Iterator<Item> iterator = items.iterator();
 		Item item = null;
-		RentalSearchResponse response = null;
+		RentalCard rentalCard = null;
 
 		while (iterator.hasNext()) {
 			item = iterator.next();
@@ -43,13 +45,12 @@ public class PostRentalSearchHandler implements RequestHandler<RentalSearchReque
 			if (displayPrice == null || displayPrice.isEmpty()) {
 				continue;
 			}
-			response = new RentalSearchResponse.Builder().displayPrice(displayPrice)
-					.neighborhood(item.getString("Neighborhood")).title(title)
-					.description(item.getString("Description")).build();
-			responses.add(response);
+			rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood(item.getString("Neighborhood"))
+					.title(title).description(item.getString("Description")).build();
+			data.addRentalCard(rentalCard);
 		}
 
-		return responses;
+		return new RentalSearchResponse(200, "", data);
 	}
 
 	// Return display price if this satisfy price filter condition

@@ -17,7 +17,7 @@ import com.wjc.response.RentalDetailResponse;
  * 
  * @author jiechao
  */
-public class GetRentalDetailsHandler implements RequestHandler<RentalDetailRequest, RentalDetailResponse> {
+public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, RentalDetailResponse> {
 
 	@Override
 	public RentalDetailResponse handleRequest(RentalDetailRequest input, Context context) {

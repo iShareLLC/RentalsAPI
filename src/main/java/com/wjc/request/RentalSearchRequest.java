@@ -2,7 +2,7 @@ package com.wjc.request;
 
 import java.util.List;
 
-import com.wjc.constant.DurationUnit;
+import com.wjc.constant.TimeUnit;
 import com.wjc.constant.RentalType;
 
 public class RentalSearchRequest {
@@ -11,7 +11,7 @@ public class RentalSearchRequest {
 	// Unix epoch timestamp in milliseconds
 	private long startDateMillis;
 	private int duration;
-	private DurationUnit durationUnit;
+	private TimeUnit durationUnit;
 	private List<RentalType> rentalTypes;
 	private float minPrice;
 	private float maxPrice;
@@ -51,11 +51,11 @@ public class RentalSearchRequest {
 		this.duration = duration;
 	}
 
-	public DurationUnit getDurationUnit() {
+	public TimeUnit getDurationUnit() {
 		return durationUnit;
 	}
 
-	public void setDurationUnit(DurationUnit durationUnit) {
+	public void setDurationUnit(TimeUnit durationUnit) {
 		this.durationUnit = durationUnit;
 	}
 
@@ -103,7 +103,7 @@ public class RentalSearchRequest {
 		private String neighborhood;
 		private long startDateMillis;
 		private int duration;
-		private DurationUnit durationUnit;
+		private TimeUnit durationUnit;
 		private List<RentalType> rentalTypes;
 		private float minPrice;
 		private float maxPrice;
@@ -125,7 +125,7 @@ public class RentalSearchRequest {
 			return this;
 		}
 
-		public Builder durationUnit(DurationUnit durationUnit) {
+		public Builder durationUnit(TimeUnit durationUnit) {
 			this.durationUnit = durationUnit;
 			return this;
 		}

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.wjc.constant.DurationUnit;
+import com.wjc.constant.TimeUnit;
 import com.wjc.constant.RentalType;
 import com.wjc.model.test.Request;
 import com.wjc.request.RentalSearchRequest;
