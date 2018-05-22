@@ -1,8 +1,7 @@
 package com.wjc.request;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.wjc.constant.RentalType;
 
 public class RentalSearchRequest {
 
@@ -12,7 +11,7 @@ public class RentalSearchRequest {
 	private int duration;
 	// 0 year, 1 month, 2 week, 3 day
 	private int durationUnit;
-//	private List<RentalType> rentalTypes;
+	private List<Integer> rentalTypes = new ArrayList<>();
 	private float minPrice;
 	private float maxPrice;
 	// Start index of the results to return
@@ -55,13 +54,13 @@ public class RentalSearchRequest {
 		this.durationUnit = durationUnit;
 	}
 
-//	public List<RentalType> getRentalTypes() {
-//		return rentalTypes;
-//	}
-//
-//	public void setRentalTypes(List<RentalType> rentalTypes) {
-//		this.rentalTypes = rentalTypes;
-//	}
+	public List<Integer> getRentalTypes() {
+		return rentalTypes;
+	}
+
+	public void setRentalTypes(List<Integer> rentalTypes) {
+		this.rentalTypes = rentalTypes;
+	}
 
 	public float getMinPrice() {
 		return minPrice;
@@ -100,7 +99,7 @@ public class RentalSearchRequest {
 		private long startDate;
 		private int duration;
 		private int durationUnit;
-//		private List<RentalType> rentalTypes;
+		private List<Integer> rentalTypes;
 		private float minPrice;
 		private float maxPrice;
 		private int start;
@@ -126,10 +125,10 @@ public class RentalSearchRequest {
 			return this;
 		}
 
-//		public Builder rentalTypes(List<RentalType> rentalTypes) {
-//			this.rentalTypes = rentalTypes;
-//			return this;
-//		}
+		public Builder rentalTypes(List<Integer> rentalTypes) {
+			this.rentalTypes = rentalTypes;
+			return this;
+		}
 
 		public Builder minPrice(float minPrice) {
 			this.minPrice = minPrice;
@@ -161,7 +160,7 @@ public class RentalSearchRequest {
 		this.startDate = builder.startDate;
 		this.duration = builder.duration;
 		this.durationUnit = builder.durationUnit;
-//		this.rentalTypes = builder.rentalTypes;
+		this.rentalTypes = builder.rentalTypes;
 		this.minPrice = builder.minPrice;
 		this.maxPrice = builder.maxPrice;
 		this.start = builder.start;

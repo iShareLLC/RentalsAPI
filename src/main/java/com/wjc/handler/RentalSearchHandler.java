@@ -61,7 +61,7 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 					.title("test title").description("some description").addImageUrl("url 1").addImageUrl("url 2").build();
 			data.addRentalCard(rentalCard);
 		}
-		return new RentalSearchResponse(200, "", data);
+		return new RentalSearchResponse(200, "get rental types: " + input.getRentalTypes().size(), data);
 	}
 
 	// Return display price if this satisfy price filter condition
