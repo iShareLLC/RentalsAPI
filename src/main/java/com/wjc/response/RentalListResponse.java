@@ -2,6 +2,11 @@ package com.wjc.response;
 
 import java.util.List;
 
+/**
+ * For popular places
+ * 
+ * @author jiechao
+ */
 public class RentalListResponse {
 	
 	private int statusCode;

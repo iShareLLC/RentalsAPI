@@ -1,5 +1,8 @@
 package com.wjc.response;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RentalCard {
 
 	// In US cents
@@ -9,6 +12,7 @@ public class RentalCard {
 	private String neighborhood;
 	private String title;
 	private String description;
+	private List<String> imageUrls;
 
 	public int getPrice() {
 		return price;
@@ -49,6 +53,14 @@ public class RentalCard {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public List<String> getImageUrls() {
+		return imageUrls;
+	}
+	
+	public void setImageUrls(List<String> imageUrls) {
+		this.imageUrls = imageUrls;
+	}
 
 	public static class Builder {
 		private int price;
@@ -56,6 +68,7 @@ public class RentalCard {
 		private String neighborhood;
 		private String title;
 		private String description;
+		private List<String> imageUrls = new ArrayList<>();
 
 		public Builder price(int price) {
 			this.price = price;
@@ -81,6 +94,11 @@ public class RentalCard {
 			this.description = description;
 			return this;
 		}
+		
+		public Builder addImageUrl(String imageUrl) {
+			imageUrls.add(imageUrl);
+			return this;
+		}
 
 		public RentalCard build() {
 			return new RentalCard(this);
@@ -93,5 +111,6 @@ public class RentalCard {
 		this.neighborhood = builder.neighborhood;
 		this.title = builder.title;
 		this.description = builder.description;
+		this.imageUrls = builder.imageUrls;
 	}
 }
