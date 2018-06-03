@@ -20,7 +20,7 @@ import com.wjc.response.RentalDetailResponse;
 public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, RentalDetailResponse> {
 
 	@Override
-	public RentalDetailResponse handleRequest(RentalDetailRequest input, Context context) {
+	public RentalDetailResponse handleRequest(RentalDetailRequest request, Context context) {
 		List<String> imageUrls = new ArrayList<>();
 		imageUrls.add("https://media.tmz.com/2018/03/28/0328-jennifer-lopez-alex-rodriguez-new-york-apartment-photos-launch-3.jpg");
 		imageUrls.add("http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg");

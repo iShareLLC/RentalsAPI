@@ -23,7 +23,7 @@ import com.wjc.util.DynamoDBUtil;
 public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, RentalSearchResponse> {
 
 	@Override
-	public RentalSearchResponse handleRequest(RentalSearchRequest input, Context context) {
+	public RentalSearchResponse handleRequest(RentalSearchRequest request, Context context) {
 //		RentalSearchData data = new RentalSearchData();
 //		data.setTotalCount(100);
 //
@@ -61,7 +61,7 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 					.title("test title").description("some description").addImageUrl("url 1").addImageUrl("url 2").build();
 			data.addRentalCard(rentalCard);
 		}
-		return new RentalSearchResponse(200, "get rental types: " + input.getRentalTypes().size(), data);
+		return new RentalSearchResponse(200, "get rental types: " + request.getRentalTypes().size(), data);
 	}
 
 	// Return display price if this satisfy price filter condition
