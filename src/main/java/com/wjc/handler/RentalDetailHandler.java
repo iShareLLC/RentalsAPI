@@ -39,7 +39,7 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		transpotation.put("Path", "5分钟步行距离至 Chinatown");
 		
 		String description = "精装修，带家具，独立厨卫，包水电暖网络；交通方便，生活便利，房子干净整洁。"
-				+ "city: " + input.getCity() + " postTime: " + input.getPostTime();
+				+ "city: " + request.getCity() + " postTime: " + request.getPostTime();
 
 		return new RentalDetailResponse.Builder().imageUrls(imageUrls).availableStartDate(1550188800)
 				.availableEndDate(1561161600).title("位于皇后高地区的精装公寓")

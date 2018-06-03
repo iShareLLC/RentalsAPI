@@ -63,7 +63,7 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 			data.addRentalCard(rentalCard);
 		}
 		
-		return new RentalSearchResponse(200, "get rental type length: " + input.getRentalTypes().split(",").length, data);
+		return new RentalSearchResponse(200, "get rental type length: " + request.getRentalTypes().split(",").length, data);
 	}
 
 	// Return display price if this satisfy price filter condition
