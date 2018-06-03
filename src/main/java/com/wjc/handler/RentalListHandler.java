@@ -17,8 +17,8 @@ import com.wjc.response.RentalListResponse;
 public class RentalListHandler implements RequestHandler<RentalListRequest, List<RentalListResponse>> {
 
 	@Override
-	public List<RentalListResponse> handleRequest(RentalListRequest input, Context context) {
-		String description = "This is a very long long long long long long long long description from user in " + input.getCity();
+	public List<RentalListResponse> handleRequest(RentalListRequest request, Context context) {
+		String description = "This is a very long long long long long long long long description from user in " + request.getCity();
 		List<String> imageUrls = new ArrayList<>();
 		imageUrls.add("https://room-matehotels.com/images/img/general/slide_inicio/slide_01.jpg");
 		imageUrls.add(

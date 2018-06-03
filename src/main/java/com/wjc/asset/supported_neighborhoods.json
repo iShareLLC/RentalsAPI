@@ -1,0 +1,199 @@
+[
+  {
+    "Name": "Park Slope",
+    "Chinese Name": "公园坡度"
+  },
+  {
+    "Name": "Long Island City",
+    "Chinese Name": "长岛市"
+  },
+  {
+    "Name": "Kips Bay",
+    "Chinese Name": "基普斯湾"
+  },
+  {
+    "Name": "SoHo",
+    "Chinese Name": "苏豪区"
+  },
+  {
+    "Name": "Fordham",
+    "Chinese Name": "福特汉姆"
+  },
+  {
+    "Name": "Midtown West",
+    "Chinese Name": "中城西区"
+  },
+  {
+    "Name": "Prospect Heights",
+    "Chinese Name": "展望高地"
+  },
+  {
+    "Name": "Downtown Brooklyn",
+    "Chinese Name": "布鲁克林下城"
+  },
+  {
+    "Name": "Brooklyn Heights",
+    "Chinese Name": "布鲁克林高地"
+  },
+  {
+    "Name": "Lower East Side",
+    "Chinese Name": "下东区"
+  },
+  {
+    "Name": "Astoria",
+    "Chinese Name": "阿斯托里亚"
+  },
+  {
+    "Name": "Greenwich Village",
+    "Chinese Name": "格林威治村"
+  },
+  {
+    "Name": "East Harlem",
+    "Chinese Name": "东哈莱姆"
+  },
+  {
+    "Name": "Flatiron District",
+    "Chinese Name": "熨斗区"
+  },
+  {
+    "Name": "Forest Hills",
+    "Chinese Name": "森林小丘"
+  },
+  {
+    "Name": "Lincoln Square",
+    "Chinese Name": "林肯广场"
+  },
+  {
+    "Name": "Williamsburg",
+    "Chinese Name": "威廉斯堡"
+  },
+  {
+    "Name": "Washington Heights",
+    "Chinese Name": "华盛顿高地"
+  },
+  {
+    "Name": "Fresh Meadows",
+    "Chinese Name": "新鲜草地"
+  },
+  {
+    "Name": "Financial District",
+    "Chinese Name": "金融区"
+  },
+  {
+    "Name": "City Island",
+    "Chinese Name": "城市岛"
+  },
+  {
+    "Name": "Bayside",
+    "Chinese Name": "碧沙"
+  },
+  {
+    "Name": "Nolita",
+    "Chinese Name": "诺利塔"
+  },
+  {
+    "Name": "Inwood",
+    "Chinese Name": "英伍德"
+  },
+  {
+    "Name": "Chelsea",
+    "Chinese Name": "切尔西"
+  },
+  {
+    "Name": "Upper West Side",
+    "Chinese Name": "上西区"
+  },
+  {
+    "Name": "Flushing",
+    "Chinese Name": "法拉盛"
+  },
+  {
+    "Name": "Carnegie Hill",
+    "Chinese Name": "卡内基丘"
+  },
+  {
+    "Name": "Gramercy Park",
+    "Chinese Name": "格拉梅西公园"
+  },
+  {
+    "Name": "West Village",
+    "Chinese Name": "西村"
+  },
+  {
+    "Name": "Upper East Side",
+    "Chinese Name": "上东区"
+  },
+  {
+    "Name": "Jackson Heights",
+    "Chinese Name": "杰克逊高地"
+  },
+  {
+    "Name": "Morningside Heights",
+    "Chinese Name": "晨边高地"
+  },
+  {
+    "Name": "Little Italy",
+    "Chinese Name": "小意大利"
+  },
+  {
+    "Name": "Manhattan Valley",
+    "Chinese Name": "曼哈顿谷"
+  },
+  {
+    "Name": "Tribeca",
+    "Chinese Name": "翠贝卡"
+  },
+  {
+    "Name": "East Village",
+    "Chinese Name": "东村"
+  },
+  {
+    "Name": "Murray Hill",
+    "Chinese Name": "默里山"
+  },
+  {
+    "Name": "DUMBO",
+    "Chinese Name": "桥下艺术新区"
+  },
+  {
+    "Name": "Midtown",
+    "Chinese Name": "中城"
+  },
+  {
+    "Name": "Woodside",
+    "Chinese Name": "伍德赛德"
+  },
+  {
+    "Name": "Hell's Kitchen/Clinton",
+    "Chinese Name": "地狱厨房/克林顿区"
+  },
+  {
+    "Name": "Battery Park City",
+    "Chinese Name": "炮台公园城"
+  },
+  {
+    "Name": "West Harlem",
+    "Chinese Name": "西哈莱姆"
+  },
+  {
+    "Name": "Roosevelt Island",
+    "Chinese Name": "罗斯福岛"
+  },
+  {
+    "Name": "Central Harlem",
+    "Chinese Name": "中央哈莱姆"
+  },
+  {
+    "Name": "Alphabet City",
+    "Chinese Name": "字母城"
+  },
+  {
+    "Name": "Midtown East",
+    "Chinese Name": "中城东区"
+  },
+  {
+    "Name": "Chinatown",
+    "Chinese Name": "中国城"
+  }
+]
+

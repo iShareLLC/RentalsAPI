@@ -23,7 +23,7 @@ import com.wjc.util.DynamoDBUtil;
 public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, RentalSearchResponse> {
 
 	@Override
-	public RentalSearchResponse handleRequest(RentalSearchRequest input, Context context) {
+	public RentalSearchResponse handleRequest(RentalSearchRequest request, Context context) {
 //		RentalSearchData data = new RentalSearchData();
 //		data.setTotalCount(100);
 //
@@ -57,9 +57,9 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 		RentalSearchData data = new RentalSearchData();
 		data.setTotalCount(100);
 		for (int i = 0; i < 3; i++) {
-			RentalCard rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood(input.getNeighborhood())
-					.title("test title").description("minPrice is " + input.getMinPrice() + " start is " + input.getStart())
-					.addImageUrl("startDate is " + input.getStartDate()).addImageUrl("url 2").postTime(1525609320).build();
+			RentalCard rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood(request.getNeighborhood())
+					.title("test title").description("minPrice is " + request.getMinPrice() + " start is " + request.getStart())
+					.addImageUrl("startDate is " + request.getStartDate()).addImageUrl("url 2").postTime(1525609320).build();
 			data.addRentalCard(rentalCard);
 		}
 		
