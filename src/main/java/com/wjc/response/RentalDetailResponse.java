@@ -6,12 +6,12 @@ import java.util.Map;
 public final class RentalDetailResponse {
 
 	private List<String> imageUrls;
-	private String availableStartDate;
-	private String availableEndDate;
+	private long availableStartDate;
+	private long availableEndDate;
 	private String neighborhood;
 	private String title;
 	private String description;
-	private Map<String, List<String>> prices;
+	private Map<Integer, List<Integer>> prices;
 	private boolean includeInternet;
 	private boolean includeElectricity;
 	private boolean includeWater;
@@ -43,19 +43,19 @@ public final class RentalDetailResponse {
 		this.imageUrls = imageUrls;
 	}
 
-	public String getAvailableStartDate() {
+	public long getAvailableStartDate() {
 		return availableStartDate;
 	}
 
-	public void setAvailableStartDate(String availableStartDate) {
+	public void setAvailableStartDate(long availableStartDate) {
 		this.availableStartDate = availableStartDate;
 	}
 
-	public String getAvailableEndDate() {
+	public long getAvailableEndDate() {
 		return availableEndDate;
 	}
 
-	public void setAvailableEndDate(String availableEndDate) {
+	public void setAvailableEndDate(long availableEndDate) {
 		this.availableEndDate = availableEndDate;
 	}
 
@@ -83,11 +83,11 @@ public final class RentalDetailResponse {
 		this.description = description;
 	}
 
-	public Map<String, List<String>> getPrices() {
+	public Map<Integer, List<Integer>> getPrices() {
 		return prices;
 	}
 
-	public void setPrices(Map<String, List<String>> prices) {
+	public void setPrices(Map<Integer, List<Integer>> prices) {
 		this.prices = prices;
 	}
 
@@ -207,12 +207,12 @@ public final class RentalDetailResponse {
 
 	public static class Builder {
 		private List<String> imageUrls;
-		private String availableStartDate;
-		private String availableEndDate;
+		private long availableStartDate;
+		private long availableEndDate;
 		private String neighborhood;
 		private String title;
 		private String description;
-		private Map<String, List<String>> prices;
+		private Map<Integer, List<Integer>> prices;
 		private boolean includeInternet;
 		private boolean includeElectricity;
 		private boolean includeWater;
@@ -233,12 +233,12 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder availableStartDate(String availableStartDate) {
+		public Builder availableStartDate(long availableStartDate) {
 			this.availableStartDate = availableStartDate;
 			return this;
 		}
 
-		public Builder availableEndDate(String availableEndDate) {
+		public Builder availableEndDate(long availableEndDate) {
 			this.availableEndDate = availableEndDate;
 			return this;
 		}
@@ -258,7 +258,7 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder prices(Map<String, List<String>> prices) {
+		public Builder prices(Map<Integer, List<Integer>> prices) {
 			this.prices = prices;
 			return this;
 		}

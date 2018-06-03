@@ -1,25 +1,19 @@
 package com.wjc.constant;
 
 public enum RentalType {
-	ENTIRE_UNIT("整套", "EntireUnit"),
-	MASTER_ROOM("主卧", "MasterRoom"),
-	GUEST_ROOM("客卧", "GuestRoom"),
-	LIVING_ROOM("客厅", "LivingRoom");
+	ENTIRE_UNIT(0),
+	MASTER_ROOM(1),
+	GUEST_ROOM(2),
+	LIVING_ROOM(3);
 
-	private String displayName;
-	private String dbName;
+	private int dbValue;
 
-	RentalType(String displayName, String dbName) {
-		this.displayName = displayName;
-		this.dbName = dbName;
-	}
-
-	public String displayName() {
-		return displayName;
+	RentalType(int dbValue) {
+		this.dbValue = dbValue;
 	}
 	
-	public String dbName() {
-		return dbName;
+	public int dbValue() {
+		return dbValue;
 	}
 
 }

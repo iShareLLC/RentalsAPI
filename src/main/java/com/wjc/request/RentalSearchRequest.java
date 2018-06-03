@@ -1,23 +1,20 @@
 package com.wjc.request;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RentalSearchRequest {
 
 	private String neighborhood;
 	// Unix epoch timestamp in milliseconds
-	private long startDate;
-	private int duration;
+	private String startDate;
+	private String duration;
 	// 0 year, 1 month, 2 week, 3 day
-	private int durationUnit;
-	private List<Integer> rentalTypes = new ArrayList<>();
-	private float minPrice;
-	private float maxPrice;
+	private String durationUnit;
+	private String rentalTypes;
+	private String minPrice;
+	private String maxPrice;
 	// Start index of the results to return
-	private int start;
+	private String start;
 	// The maximum number of results to return
-	private int limit;
+	private String limit;
 
 	public RentalSearchRequest() {
 	}
@@ -30,140 +27,67 @@ public class RentalSearchRequest {
 		this.neighborhood = neighborhood;
 	}
 
-	public long getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(long startDateMillis) {
-		this.startDate = startDateMillis;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
-	public int getDurationUnit() {
+	public String getDurationUnit() {
 		return durationUnit;
 	}
 
-	public void setDurationUnit(int durationUnit) {
+	public void setDurationUnit(String durationUnit) {
 		this.durationUnit = durationUnit;
 	}
 
-	public List<Integer> getRentalTypes() {
+	public String getRentalTypes() {
 		return rentalTypes;
 	}
 
-	public void setRentalTypes(List<Integer> rentalTypes) {
+	public void setRentalTypes(String rentalTypes) {
 		this.rentalTypes = rentalTypes;
 	}
 
-	public float getMinPrice() {
+	public String getMinPrice() {
 		return minPrice;
 	}
 
-	public void setMinPrice(float minPrice) {
+	public void setMinPrice(String minPrice) {
 		this.minPrice = minPrice;
 	}
 
-	public float getMaxPrice() {
+	public String getMaxPrice() {
 		return maxPrice;
 	}
 
-	public void setMaxPrice(float maxPrice) {
+	public void setMaxPrice(String maxPrice) {
 		this.maxPrice = maxPrice;
 	}
 
-	public int getStart() {
+	public String getStart() {
 		return start;
 	}
 
-	public void setStart(int start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
 
-	public int getLimit() {
+	public String getLimit() {
 		return limit;
 	}
 
-	public void setLimit(int limit) {
+	public void setLimit(String limit) {
 		this.limit = limit;
-	}
-
-	public static class Builder {
-		private String neighborhood;
-		private long startDate;
-		private int duration;
-		private int durationUnit;
-		private List<Integer> rentalTypes;
-		private float minPrice;
-		private float maxPrice;
-		private int start;
-		private int limit;
-
-		public Builder neighborhood(String neighborhood) {
-			this.neighborhood = neighborhood;
-			return this;
-		}
-
-		public Builder startDate(long startDate) {
-			this.startDate = startDate;
-			return this;
-		}
-
-		public Builder duration(int duration) {
-			this.duration = duration;
-			return this;
-		}
-
-		public Builder durationUnit(int durationUnit) {
-			this.durationUnit = durationUnit;
-			return this;
-		}
-
-		public Builder rentalTypes(List<Integer> rentalTypes) {
-			this.rentalTypes = rentalTypes;
-			return this;
-		}
-
-		public Builder minPrice(float minPrice) {
-			this.minPrice = minPrice;
-			return this;
-		}
-
-		public Builder maxPrice(float maxPrice) {
-			this.maxPrice = maxPrice;
-			return this;
-		}
-
-		public Builder start(int start) {
-			this.start = start;
-			return this;
-		}
-
-		public Builder limit(int limit) {
-			this.limit = limit;
-			return this;
-		}
-
-		public RentalSearchRequest build() {
-			return new RentalSearchRequest(this);
-		}
-	}
-
-	private RentalSearchRequest(Builder builder) {
-		this.neighborhood = builder.neighborhood;
-		this.startDate = builder.startDate;
-		this.duration = builder.duration;
-		this.durationUnit = builder.durationUnit;
-		this.rentalTypes = builder.rentalTypes;
-		this.minPrice = builder.minPrice;
-		this.maxPrice = builder.maxPrice;
-		this.start = builder.start;
-		this.limit = builder.limit;
 	}
 }

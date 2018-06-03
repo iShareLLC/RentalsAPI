@@ -57,11 +57,13 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 		RentalSearchData data = new RentalSearchData();
 		data.setTotalCount(100);
 		for (int i = 0; i < 3; i++) {
-			RentalCard rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood("a neighborhood")
-					.title("test title").description("some description").addImageUrl("url 1").addImageUrl("url 2").build();
+			RentalCard rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood(input.getNeighborhood())
+					.title("test title").description("minPrice is " + input.getMinPrice() + " start is " + input.getStart())
+					.addImageUrl("startDate is " + input.getStartDate()).addImageUrl("url 2").postTime(1525609320).build();
 			data.addRentalCard(rentalCard);
 		}
-		return new RentalSearchResponse(200, "get rental types: " + input.getRentalTypes().size(), data);
+		
+		return new RentalSearchResponse(200, "get rental type length: " + input.getRentalTypes().split(",").length, data);
 	}
 
 	// Return display price if this satisfy price filter condition

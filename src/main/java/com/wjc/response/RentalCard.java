@@ -13,6 +13,7 @@ public class RentalCard {
 	private String title;
 	private String description;
 	private List<String> imageUrls;
+	private long postTime;
 
 	public int getPrice() {
 		return price;
@@ -53,13 +54,21 @@ public class RentalCard {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public List<String> getImageUrls() {
 		return imageUrls;
 	}
-	
+
 	public void setImageUrls(List<String> imageUrls) {
 		this.imageUrls = imageUrls;
+	}
+
+	public long getPostTime() {
+		return postTime;
+	}
+
+	public void setPostTime(long postTime) {
+		this.postTime = postTime;
 	}
 
 	public static class Builder {
@@ -69,6 +78,7 @@ public class RentalCard {
 		private String title;
 		private String description;
 		private List<String> imageUrls = new ArrayList<>();
+		private long postTime;
 
 		public Builder price(int price) {
 			this.price = price;
@@ -94,9 +104,19 @@ public class RentalCard {
 			this.description = description;
 			return this;
 		}
+
+		public Builder imageUrls(List<String> imageUrls) {
+			this.imageUrls = imageUrls;
+			return this;
+		}
+
+		public Builder postTime(long postTime) {
+			this.postTime = postTime;
+			return this;
+		}
 		
 		public Builder addImageUrl(String imageUrl) {
-			imageUrls.add(imageUrl);
+			this.imageUrls.add(imageUrl);
 			return this;
 		}
 
@@ -112,5 +132,6 @@ public class RentalCard {
 		this.title = builder.title;
 		this.description = builder.description;
 		this.imageUrls = builder.imageUrls;
+		this.postTime = builder.postTime;
 	}
 }
