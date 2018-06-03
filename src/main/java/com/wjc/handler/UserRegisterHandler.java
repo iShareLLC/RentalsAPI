@@ -10,8 +10,8 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 	@Override
 	public UserRegisterResponse handleRequest(UserRegisterRequest request, Context context) {
 		UserRegisterResponse response = new UserRegisterResponse();
-		response.setStatusCode(200);
-		response.setMessage("email is " + request.getEmail());
+		response.setStatusCode(201);
+		response.setMessage("email is " + request.getEmail() + " wechat id is " + request.getWeChatId());
 		return response;
 	}
 
