@@ -1,0 +1,18 @@
+[
+	{
+		"Name": "Red line",
+		"Chinese Name" : "红线"
+	},
+	{
+		"Name": "Yellow line",
+		"Chinese Name" : "黄线"
+	},
+	{
+		"Name": "Blue line",
+		"Chinese Name" : "蓝线"
+	},
+	{
+		"Name": "Green line",
+		"Chinese Name" : "绿线"
+	}
+]
