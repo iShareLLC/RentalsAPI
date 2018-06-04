@@ -7,7 +7,7 @@ public class RentalSearchRequest {
 	private String startDate;
 	private String duration;
 	// 0 year, 1 month, 2 week, 3 day
-	private String durationUnit;
+	private int durationUnit;
 	private String rentalTypes;
 	private String minPrice;
 	private String maxPrice;
@@ -43,11 +43,11 @@ public class RentalSearchRequest {
 		this.duration = duration;
 	}
 
-	public String getDurationUnit() {
+	public int getDurationUnit() {
 		return durationUnit;
 	}
 
-	public void setDurationUnit(String durationUnit) {
+	public void setDurationUnit(int durationUnit) {
 		this.durationUnit = durationUnit;
 	}
 

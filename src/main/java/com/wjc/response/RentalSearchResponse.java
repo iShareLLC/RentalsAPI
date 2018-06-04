@@ -1,5 +1,7 @@
 package com.wjc.response;
 
+import com.wjc.model.RentalSearchData;
+
 public class RentalSearchResponse {
 	
 	private int statusCode;

@@ -1,4 +1,4 @@
-package com.wjc.response;
+package com.wjc.model;
 
 import java.util.ArrayList;
 import java.util.List;

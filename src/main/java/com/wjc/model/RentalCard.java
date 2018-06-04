@@ -1,8 +1,13 @@
-package com.wjc.response;
+package com.wjc.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents one rental in rental search results list
+ * 
+ * @author jiechao
+ */
 public class RentalCard {
 
 	// In US cents

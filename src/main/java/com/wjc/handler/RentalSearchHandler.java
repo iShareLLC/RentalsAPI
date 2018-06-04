@@ -1,24 +1,11 @@
 package com.wjc.handler;
 
-import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import com.amazonaws.services.dynamodbv2.document.Item;
-import com.amazonaws.services.dynamodbv2.document.ItemCollection;
-import com.amazonaws.services.dynamodbv2.document.QueryOutcome;
-import com.amazonaws.services.dynamodbv2.document.Table;
-import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
-import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.constant.RentalType;
+import com.wjc.model.RentalCard;
+import com.wjc.model.RentalSearchData;
 import com.wjc.request.RentalSearchRequest;
-import com.wjc.response.RentalCard;
-import com.wjc.response.RentalSearchData;
 import com.wjc.response.RentalSearchResponse;
-import com.wjc.util.DynamoDBUtil;
 
 public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, RentalSearchResponse> {
 
