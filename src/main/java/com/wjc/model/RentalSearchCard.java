@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author jiechao
  */
-public class RentalCard {
+public class RentalSearchCard {
 
 	// In US cents
 	private int price;
@@ -125,12 +125,12 @@ public class RentalCard {
 			return this;
 		}
 
-		public RentalCard build() {
-			return new RentalCard(this);
+		public RentalSearchCard build() {
+			return new RentalSearchCard(this);
 		}
 	}
 
-	private RentalCard(Builder builder) {
+	private RentalSearchCard(Builder builder) {
 		this.price = builder.price;
 		this.timeUnit = builder.timeUnit;
 		this.neighborhood = builder.neighborhood;

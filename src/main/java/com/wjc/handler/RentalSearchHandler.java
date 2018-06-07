@@ -2,7 +2,7 @@ package com.wjc.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.model.RentalCard;
+import com.wjc.model.RentalSearchCard;
 import com.wjc.model.RentalSearchData;
 import com.wjc.request.RentalSearchRequest;
 import com.wjc.response.RentalSearchResponse;
@@ -44,7 +44,7 @@ public class RentalSearchHandler implements RequestHandler<RentalSearchRequest, 
 		RentalSearchData data = new RentalSearchData();
 		data.setTotalCount(100);
 		for (int i = 0; i < 3; i++) {
-			RentalCard rentalCard = new RentalCard.Builder().price(3100).timeUnit(1).neighborhood(request.getNeighborhood())
+			RentalSearchCard rentalCard = new RentalSearchCard.Builder().price(3100).timeUnit(1).neighborhood(request.getNeighborhood())
 					.title("test title").description("minPrice is " + request.getMinPrice() + " start is " + request.getStart())
 					.addImageUrl("startDate is " + request.getStartDate()).addImageUrl("url 2").postTime(1525609320).build();
 			data.addRentalCard(rentalCard);

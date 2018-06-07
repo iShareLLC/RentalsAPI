@@ -5,22 +5,22 @@ import java.util.List;
 
 public class RentalSearchData {
 
-	private List<RentalCard> results = new ArrayList<>();
+	private List<RentalSearchCard> results = new ArrayList<>();
 	private int totalCount;
 	
 	public RentalSearchData() {
 	}
 	
-	public RentalSearchData(List<RentalCard> results, int totalCount) {
+	public RentalSearchData(List<RentalSearchCard> results, int totalCount) {
 		this.results.addAll(results);
 		this.totalCount = totalCount;
 	}
 
-	public List<RentalCard> getResults() {
+	public List<RentalSearchCard> getResults() {
 		return results;
 	}
 
-	public void setResults(List<RentalCard> results) {
+	public void setResults(List<RentalSearchCard> results) {
 		this.results = results;
 	}
 
@@ -32,7 +32,7 @@ public class RentalSearchData {
 		this.totalCount = totalCount;
 	}
 	
-	public void addRentalCard(RentalCard card) {
+	public void addRentalCard(RentalSearchCard card) {
 		results.add(card);
 	}
 }
