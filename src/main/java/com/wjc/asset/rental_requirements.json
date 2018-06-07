@@ -1,0 +1,26 @@
+[
+	{
+		"Name": "No cats",
+		"Chinese Name" : "无猫"
+	},
+	{
+		"Name": "No dogs",
+		"Chinese Name" : "无狗"
+	},
+	{
+		"Name": "Non-smoking",
+		"Chinese Name" : "无烟"
+	},
+	{
+		"Name": "Need deposits",
+		"Chinese Name" : "有押金"
+	},
+	{
+		"Name": "Male only",
+		"Chinese Name" : "男生"
+	},
+	{
+		"Name": "Female only",
+		"Chinese Name" : "女生"
+	}
+]
