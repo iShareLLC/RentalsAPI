@@ -1,0 +1,39 @@
+[
+  {
+    "Name": "WiFi",
+    "Chinese Name": "WiFi"
+  },
+  {
+    "Name": "TV",
+    "Chinese Name": "电视"
+  },
+  {
+    "Name": "Washer",
+    "Chinese Name": "洗衣机"
+  },
+  {
+    "Name": "Dryer",
+    "Chinese Name": "烘干机"
+  },
+  {
+    "Name": "Central AC",
+    "Chinese Name": "中央空调"
+  },
+  {
+    "Name": "Shared bath",
+    "Chinese Name": "公用浴室"
+  },
+  {
+    "Name": "Private bath",
+    "Chinese Name": "单独浴室"
+  },
+  {
+    "Name": "Bed included",
+    "Chinese Name": "有床"
+  },
+  {
+    "Name": "Furniture included",
+    "Chinese Name": "有家具"
+  }
+]
+
