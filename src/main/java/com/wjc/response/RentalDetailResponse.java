@@ -11,7 +11,7 @@ public final class RentalDetailResponse {
 	private String neighborhood;
 	private String title;
 	private String description;
-	private Map<Integer, List<Integer>> prices;
+	private Map<String, List<Integer>> prices;
 	private boolean includeInternet;
 	private boolean includeElectricity;
 	private boolean includeWater;
@@ -83,11 +83,11 @@ public final class RentalDetailResponse {
 		this.description = description;
 	}
 
-	public Map<Integer, List<Integer>> getPrices() {
+	public Map<String, List<Integer>> getPrices() {
 		return prices;
 	}
 
-	public void setPrices(Map<Integer, List<Integer>> prices) {
+	public void setPrices(Map<String, List<Integer>> prices) {
 		this.prices = prices;
 	}
 
@@ -212,7 +212,7 @@ public final class RentalDetailResponse {
 		private String neighborhood;
 		private String title;
 		private String description;
-		private Map<Integer, List<Integer>> prices;
+		private Map<String, List<Integer>> prices;
 		private boolean includeInternet;
 		private boolean includeElectricity;
 		private boolean includeWater;
@@ -258,7 +258,7 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder prices(Map<Integer, List<Integer>> prices) {
+		public Builder prices(Map<String, List<Integer>> prices) {
 			this.prices = prices;
 			return this;
 		}

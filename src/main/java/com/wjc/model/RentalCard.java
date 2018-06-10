@@ -2,7 +2,7 @@ package com.wjc.model;
 
 import java.util.List;
 
-public class RentalListCard {
+public class RentalCard {
 
 	private String id;
 	// In US cents
@@ -114,12 +114,12 @@ public class RentalListCard {
 			return this;
 		}
 
-		public RentalListCard build() {
-			return new RentalListCard(this);
+		public RentalCard build() {
+			return new RentalCard(this);
 		}
 	}
 
-	private RentalListCard(Builder builder) {
+	private RentalCard(Builder builder) {
 		this.id = builder.id;
 		this.price = builder.price;
 		this.timeUnit = builder.timeUnit;

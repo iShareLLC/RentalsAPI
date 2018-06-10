@@ -6,8 +6,7 @@ import java.util.List;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.model.RentalListCard;
-import com.wjc.model.RentalListData;
+import com.wjc.model.RentalCard;
 import com.wjc.request.RentalListRequest;
 import com.wjc.response.RentalListResponse;
 
@@ -28,7 +27,7 @@ public class RentalListHandler implements RequestHandler<RentalListRequest, Rent
 		imageUrls.add(
 				"http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg");
 		
-		RentalListCard card1 = new RentalListCard.Builder()
+		RentalCard card1 = new RentalCard.Builder()
 				.id("1527978347|999")
 				.price(300000)
 				.timeUnit(1)
@@ -38,7 +37,7 @@ public class RentalListHandler implements RequestHandler<RentalListRequest, Rent
 				.imageUrls(imageUrls)
 				.build();
 		
-		RentalListCard card2 = new RentalListCard.Builder()
+		RentalCard card2 = new RentalCard.Builder()
 				.id("1517978300|12")
 				.price(450000)
 				.timeUnit(1)
@@ -48,12 +47,10 @@ public class RentalListHandler implements RequestHandler<RentalListRequest, Rent
 				.imageUrls(imageUrls)
 				.build();
 		
-		RentalListData data = new RentalListData();
-		data.setTotalCount(100);
-		data.setResults(Arrays.asList(card1, card2));
 		RentalListResponse response = new RentalListResponse();
 		response.setStatusCode(200);
-		response.setData(data);
+		response.setResults(Arrays.asList(card1, card2));
+		response.setTotalCount(100);
 		response.setMessage("a message");
 		return response;
 	}

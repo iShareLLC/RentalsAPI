@@ -27,10 +27,10 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		imageUrls.add("https://room-matehotels.com/images/img/general/slide_inicio/slide_01.jpg");
 		imageUrls.add("http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg");
 
-		Map<Integer, List<Integer>> prices = new HashMap<>();
-		prices.put(RentalType.ENTIRE_UNIT.dbValue(), Arrays.asList(100000, 30000, 6000));
-		prices.put(RentalType.GUEST_ROOM.dbValue(), Arrays.asList(85000, 25000, -1));
-		prices.put(RentalType.LIVING_ROOM.dbValue(), Arrays.asList(-1, -1, 4500));
+		Map<String, List<Integer>> prices = new HashMap<>();
+		prices.put(RentalType.ENTIRE_UNIT.getName(), Arrays.asList(100000, 30000, 6000));
+		prices.put(RentalType.GUEST_ROOM.getName(), Arrays.asList(85000, 25000, -1));
+		prices.put(RentalType.LIVING_ROOM.getName(), Arrays.asList(-1, -1, 4500));
 
 		List<String> highlights = Arrays.asList("空调", "游泳池", "健身房", "热水", "工作台");
 

@@ -1,6 +1,9 @@
 package com.wjc.response;
 
-import com.wjc.model.RentalListData;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.wjc.model.RentalCard;
 
 /**
  * For popular places
@@ -11,7 +14,8 @@ public class RentalListResponse {
 	
 	private int statusCode;
 	private String message;
-	private RentalListData data;
+	private List<RentalCard> results = new ArrayList<>();
+	private int totalCount;
 	
 	public int getStatusCode() {
 		return statusCode;
@@ -25,10 +29,16 @@ public class RentalListResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public RentalListData getData() {
-		return data;
+	public List<RentalCard> getResults() {
+		return results;
 	}
-	public void setData(RentalListData data) {
-		this.data = data;
+	public void setResults(List<RentalCard> results) {
+		this.results = results;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 }
