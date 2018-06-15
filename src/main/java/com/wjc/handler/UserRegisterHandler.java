@@ -52,8 +52,9 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 			message = "Username already exists";
 		}
 		
+		String userId = getUserId();
 		table.putItem(new PutItemSpec().withItem(new Item()
-				.withString("CreateTime|Random", getId())
+				.withString("CreateTime|Random", userId)
 				.withString("Email", request.getEmail())
 				.withString("Username", request.getUsername())
 				.withString("Password", hashPassword(request.getPassword()))
@@ -64,6 +65,7 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 		UserRegisterResponse response = new UserRegisterResponse();
 		response.setStatusCode(code);
 		response.setMessage(message);
+		response.setUserId(userId);
 		return response;
 	}
 
@@ -71,7 +73,7 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 		return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
 	}
 	
-	private String getId() {
+	private String getUserId() {
 		return System.currentTimeMillis() + "|" + new Random().nextInt(1000);
 	}
 

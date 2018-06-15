@@ -12,28 +12,16 @@ public final class RentalDetailResponse {
 	private String title;
 	private String description;
 	private Map<String, List<Integer>> prices;
-	private boolean includeInternet;
-	private boolean includeElectricity;
-	private boolean includeWater;
-	private boolean includeGas;
-	private boolean allowCat;
-	private boolean allowDog;
-
-	private boolean noSmoking;
-	private boolean hasDoorman;
-	private boolean hasWasher;
-	private boolean hasDryer;
+	private List<String> basicFeatures;
 	private List<String> highlights;
+	private List<String> moreHighlights;
 	private int statusCode;
 	private String message;
-	
+
 	// One row for subway, no matter how many lines (A/B/C/1) we have
 	// One possible row for Path
 	// One possible row for train
-	private Map<String, String> transpotation;
-
-	public RentalDetailResponse() {
-	}
+	private Map<String, String> transportation;
 
 	public List<String> getImageUrls() {
 		return imageUrls;
@@ -91,84 +79,12 @@ public final class RentalDetailResponse {
 		this.prices = prices;
 	}
 
-	public boolean isIncludeInternet() {
-		return includeInternet;
+	public List<String> getBasicFeatures() {
+		return basicFeatures;
 	}
 
-	public void setIncludeInternet(boolean includeInternet) {
-		this.includeInternet = includeInternet;
-	}
-
-	public boolean isIncludeElectricity() {
-		return includeElectricity;
-	}
-
-	public void setIncludeElectricity(boolean includeElectricity) {
-		this.includeElectricity = includeElectricity;
-	}
-
-	public boolean isIncludeWater() {
-		return includeWater;
-	}
-
-	public void setIncludeWater(boolean includeWater) {
-		this.includeWater = includeWater;
-	}
-
-	public boolean isIncludeGas() {
-		return includeGas;
-	}
-
-	public void setIncludeGas(boolean includeGas) {
-		this.includeGas = includeGas;
-	}
-
-	public boolean isAllowCat() {
-		return allowCat;
-	}
-
-	public void setAllowCat(boolean allowCat) {
-		this.allowCat = allowCat;
-	}
-
-	public boolean isAllowDog() {
-		return allowDog;
-	}
-
-	public void setAllowDog(boolean allowDog) {
-		this.allowDog = allowDog;
-	}
-
-	public boolean isNoSmoking() {
-		return noSmoking;
-	}
-
-	public void setNoSmoking(boolean noSmoking) {
-		this.noSmoking = noSmoking;
-	}
-
-	public boolean isHasDoorman() {
-		return hasDoorman;
-	}
-
-	public void setHasDoorman(boolean hasDoorman) {
-		this.hasDoorman = hasDoorman;
-	}
-
-	public boolean isHasWasher() {
-		return hasWasher;
-	}
-
-	public void setHasWasher(boolean hasWasher) {
-		this.hasWasher = hasWasher;
-	}
-
-	public boolean isHasDryer() {
-		return hasDryer;
-	}
-
-	public void setHasDryer(boolean hasDryer) {
-		this.hasDryer = hasDryer;
+	public void setBasicFeatures(List<String> basicFeatures) {
+		this.basicFeatures = basicFeatures;
 	}
 
 	public List<String> getHighlights() {
@@ -179,12 +95,12 @@ public final class RentalDetailResponse {
 		this.highlights = highlights;
 	}
 
-	public Map<String, String> getTranspotation() {
-		return transpotation;
+	public List<String> getMoreHighlights() {
+		return moreHighlights;
 	}
 
-	public void setTranspotation(Map<String, String> transpotation) {
-		this.transpotation = transpotation;
+	public void setMoreHighlights(List<String> moreHighlights) {
+		this.moreHighlights = moreHighlights;
 	}
 
 	public int getStatusCode() {
@@ -203,7 +119,13 @@ public final class RentalDetailResponse {
 		this.message = message;
 	}
 
-	// TODO: add info for contacting host
+	public Map<String, String> getTransportation() {
+		return transportation;
+	}
+
+	public void setTransportation(Map<String, String> transportation) {
+		this.transportation = transportation;
+	}
 
 	public static class Builder {
 		private List<String> imageUrls;
@@ -213,20 +135,12 @@ public final class RentalDetailResponse {
 		private String title;
 		private String description;
 		private Map<String, List<Integer>> prices;
-		private boolean includeInternet;
-		private boolean includeElectricity;
-		private boolean includeWater;
-		private boolean includeGas;
-		private boolean allowCat;
-		private boolean allowDog;
-		private boolean noSmoking;
-		private boolean hasDoorman;
-		private boolean hasWasher;
-		private boolean hasDryer;
+		private List<String> basicFeatures;
 		private List<String> highlights;
-		private Map<String, String> transpotation;
+		private List<String> moreHighlights;
 		private int statusCode;
 		private String message;
+		private Map<String, String> transportation;
 
 		public Builder imageUrls(List<String> imageUrls) {
 			this.imageUrls = imageUrls;
@@ -263,53 +177,8 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder includeInternet(boolean includeInternet) {
-			this.includeInternet = includeInternet;
-			return this;
-		}
-
-		public Builder includeElectricity(boolean includeElectricity) {
-			this.includeElectricity = includeElectricity;
-			return this;
-		}
-
-		public Builder includeWater(boolean includeWater) {
-			this.includeWater = includeWater;
-			return this;
-		}
-
-		public Builder includeGas(boolean includeGas) {
-			this.includeGas = includeGas;
-			return this;
-		}
-
-		public Builder allowCat(boolean allowCat) {
-			this.allowCat = allowCat;
-			return this;
-		}
-
-		public Builder allowDog(boolean allowDog) {
-			this.allowDog = allowDog;
-			return this;
-		}
-
-		public Builder noSmoking(boolean noSmoking) {
-			this.noSmoking = noSmoking;
-			return this;
-		}
-
-		public Builder hasDoorman(boolean hasDoorman) {
-			this.hasDoorman = hasDoorman;
-			return this;
-		}
-
-		public Builder hasWasher(boolean hasWasher) {
-			this.hasWasher = hasWasher;
-			return this;
-		}
-
-		public Builder hasDryer(boolean hasDryer) {
-			this.hasDryer = hasDryer;
+		public Builder basicFeatures(List<String> basicFeatures) {
+			this.basicFeatures = basicFeatures;
 			return this;
 		}
 
@@ -318,18 +187,23 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder transpotation(Map<String, String> transpotation) {
-			this.transpotation = transpotation;
+		public Builder moreHighlights(List<String> moreHighlights) {
+			this.moreHighlights = moreHighlights;
 			return this;
 		}
-		
+
 		public Builder statusCode(int statusCode) {
 			this.statusCode = statusCode;
 			return this;
 		}
-		
+
 		public Builder message(String message) {
 			this.message = message;
+			return this;
+		}
+
+		public Builder transportation(Map<String, String> transportation) {
+			this.transportation = transportation;
 			return this;
 		}
 
@@ -346,19 +220,11 @@ public final class RentalDetailResponse {
 		this.title = builder.title;
 		this.description = builder.description;
 		this.prices = builder.prices;
-		this.includeInternet = builder.includeInternet;
-		this.includeElectricity = builder.includeElectricity;
-		this.includeWater = builder.includeWater;
-		this.includeGas = builder.includeGas;
-		this.allowCat = builder.allowCat;
-		this.allowDog = builder.allowDog;
-		this.noSmoking = builder.noSmoking;
-		this.hasDoorman = builder.hasDoorman;
-		this.hasWasher = builder.hasWasher;
-		this.hasDryer = builder.hasDryer;
+		this.basicFeatures = builder.basicFeatures;
 		this.highlights = builder.highlights;
-		this.transpotation = builder.transpotation;
+		this.moreHighlights = builder.moreHighlights;
 		this.statusCode = builder.statusCode;
 		this.message = builder.message;
+		this.transportation = builder.transportation;
 	}
 }

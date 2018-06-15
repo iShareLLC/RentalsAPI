@@ -23,6 +23,7 @@ public class UserLoginHandler implements RequestHandler<UserLoginRequest, UserLo
 
 	private int statusCode;
 	private String message;
+	private String userId;
 	private Index index;
 
 	@Override
@@ -42,6 +43,7 @@ public class UserLoginHandler implements RequestHandler<UserLoginRequest, UserLo
 		UserLoginResponse response = new UserLoginResponse();
 		response.setStatusCode(statusCode);
 		response.setMessage(message);
+		response.setUserId(userId);
 		return response;
 	}
 
@@ -56,6 +58,7 @@ public class UserLoginHandler implements RequestHandler<UserLoginRequest, UserLo
 			if (BCrypt.checkpw(password, passwordDb)) {
 				statusCode = 200;
 				message = "Login succeeded";
+				userId = item.getString("CreateTime|Random");
 			} else {
 				statusCode = 401;
 				message = "Login failed";

@@ -32,7 +32,9 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		prices.put(RentalType.GUEST_ROOM.getName(), Arrays.asList(85000, 25000, -1));
 		prices.put(RentalType.LIVING_ROOM.getName(), Arrays.asList(-1, -1, 4500));
 
-		List<String> highlights = Arrays.asList("空调", "游泳池", "健身房", "热水", "工作台");
+		List<String> basicFeatures = Arrays.asList("Internet", "Electricity", "Water", "Gas", "Cat", "Dog", "Non-smoking");
+		List<String> highlights = Arrays.asList("AC", "Pool", "Fitness", "Hot water", "Workstation");
+		List<String> moreHighlights = Arrays.asList("Display", "Printer");
 
 		Map<String, String> transpotation = new HashMap<>();
 		transpotation.put("地铁线路D", "13分钟步行距离至 Brighton Beach");
@@ -42,11 +44,9 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 				+ "city: " + request.getCity() + " id: " + request.getId();
 
 		return new RentalDetailResponse.Builder().imageUrls(imageUrls).availableStartDate(1550188800)
-				.availableEndDate(1561161600).title("位于皇后高地区的精装公寓")
-				.description(description).prices(prices).includeInternet(true)
-				.includeElectricity(true).includeWater(false).includeGas(false).allowCat(true).allowDog(false)
-				.noSmoking(true).hasDoorman(true).hasWasher(false).hasDryer(false).highlights(highlights)
-				.transpotation(transpotation).statusCode(200).message("no exception").build();
+				.availableEndDate(1561161600).title("位于皇后高地区的精装公寓").description(description)
+				.prices(prices).basicFeatures(basicFeatures).highlights(highlights).moreHighlights(moreHighlights)
+				.transportation(transpotation).statusCode(200).message("no exception").build();
 	}
 
 }
