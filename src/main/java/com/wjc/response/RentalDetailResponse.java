@@ -1,8 +1,8 @@
 package com.wjc.response;
 
 import java.util.List;
-import java.util.Map;
 
+import com.wjc.model.RentalDetailPrice;
 import com.wjc.model.RentalDetailTransportation;
 
 public final class RentalDetailResponse {
@@ -13,7 +13,7 @@ public final class RentalDetailResponse {
 	private String neighborhood;
 	private String title;
 	private String description;
-	private Map<String, List<Integer>> prices;
+	private RentalDetailPrice prices;
 	private List<String> basicFeatures;
 	private List<String> highlights;
 	private List<String> moreHighlights;
@@ -73,11 +73,11 @@ public final class RentalDetailResponse {
 		this.description = description;
 	}
 
-	public Map<String, List<Integer>> getPrices() {
+	public RentalDetailPrice getPrices() {
 		return prices;
 	}
 
-	public void setPrices(Map<String, List<Integer>> prices) {
+	public void setPrices(RentalDetailPrice prices) {
 		this.prices = prices;
 	}
 
@@ -136,7 +136,7 @@ public final class RentalDetailResponse {
 		private String neighborhood;
 		private String title;
 		private String description;
-		private Map<String, List<Integer>> prices;
+		private RentalDetailPrice prices;
 		private List<String> basicFeatures;
 		private List<String> highlights;
 		private List<String> moreHighlights;
@@ -174,7 +174,7 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder prices(Map<String, List<Integer>> prices) {
+		public Builder prices(RentalDetailPrice prices) {
 			this.prices = prices;
 			return this;
 		}

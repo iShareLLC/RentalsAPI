@@ -8,7 +8,8 @@ import java.util.Map;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.wjc.constant.RentalType;
+import com.wjc.model.PriceSegment;
+import com.wjc.model.RentalDetailPrice;
 import com.wjc.model.RentalDetailTransportation;
 import com.wjc.model.Transportation;
 import com.wjc.model.TransportationSegment;
@@ -30,11 +31,6 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		imageUrls.add("https://room-matehotels.com/images/img/general/slide_inicio/slide_01.jpg");
 		imageUrls.add("http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg");
 
-		Map<String, List<Integer>> prices = new HashMap<>();
-		prices.put(RentalType.ENTIRE_UNIT.getName(), Arrays.asList(100000, 30000, 6000));
-		prices.put(RentalType.GUEST_ROOM.getName(), Arrays.asList(85000, 25000, -1));
-		prices.put(RentalType.LIVING_ROOM.getName(), Arrays.asList(-1, -1, 4500));
-
 		List<String> basicFeatures = Arrays.asList("Internet", "Electricity", "Water", "Gas", "Cat", "Dog", "Non-smoking");
 		List<String> highlights = Arrays.asList("AC", "Pool", "Fitness", "Hot water", "Workstation");
 		List<String> moreHighlights = Arrays.asList("Display", "Printer");
@@ -48,7 +44,7 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 
 		return new RentalDetailResponse.Builder().imageUrls(imageUrls).availableStartDate(1550188800)
 				.availableEndDate(1561161600).title("位于皇后高地区的精装公寓").description(description)
-				.prices(prices).basicFeatures(basicFeatures).highlights(highlights).moreHighlights(moreHighlights)
+				.prices(getPrices()).basicFeatures(basicFeatures).highlights(highlights).moreHighlights(moreHighlights)
 				.transportations(getTransporations()).statusCode(200).message("Succeeded").build();
 	}
 	
@@ -70,6 +66,16 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		transportations.setPath(path);
 		
 		return transportations;
+	}
+	
+	private RentalDetailPrice getPrices() {
+		
+		PriceSegment entireUnit = new PriceSegment.Builder().month(100000).week(30000).day(6000).build();
+		PriceSegment masterRoom = new PriceSegment.Builder().month(85000).week(25000).build();
+		
+		RentalDetailPrice prices = new RentalDetailPrice.Builder()
+				.entireUnit(entireUnit).masterRoom(masterRoom).build();
+		return prices;
 	}
 
 }
