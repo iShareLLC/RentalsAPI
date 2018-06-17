@@ -27,41 +27,39 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 		int code = 201;
 		String message = "Register succeeded";
 		Table table = DynamoDBUtil.getDynamoDBTable(Constant.USER_TABLE);
-		
+		String userId = null;
+
 		Index index = table.getIndex(Constant.EMAIL_INDEX);
-		QuerySpec spec = new QuerySpec()
-			    .withKeyConditionExpression("Email = :v_email")
-			    .withValueMap(new ValueMap()
-			        .withString(":v_email", request.getEmail()));
+		QuerySpec spec = new QuerySpec().withKeyConditionExpression("Email = :v_email")
+				.withValueMap(new ValueMap().withString(":v_email", request.getEmail()));
 		ItemCollection<QueryOutcome> items = index.query(spec);
 		Iterator<Item> iter = items.iterator();
 		if (iter.hasNext()) {
 			code = 409;
 			message = "Email already exists";
 		}
-		
-		index = table.getIndex(Constant.USERNAME_INDEX);
-		spec = new QuerySpec()
-			    .withKeyConditionExpression("Username = :v_username")
-			    .withValueMap(new ValueMap()
-			        .withString(":v_username", request.getUsername()));
-		items = index.query(spec);
-		iter = items.iterator();
-		if (iter.hasNext()) {
-			code = 409;
-			message = "Username already exists";
+
+		if (code != 409) {
+			index = table.getIndex(Constant.USERNAME_INDEX);
+			spec = new QuerySpec().withKeyConditionExpression("Username = :v_username")
+					.withValueMap(new ValueMap().withString(":v_username", request.getUsername()));
+			items = index.query(spec);
+			iter = items.iterator();
+			if (iter.hasNext()) {
+				code = 409;
+				message = "Username already exists";
+			}
 		}
-		
-		String userId = getUserId();
-		table.putItem(new PutItemSpec().withItem(new Item()
-				.withString("CreateTime|Random", userId)
-				.withString("Email", request.getEmail())
-				.withString("Username", request.getUsername())
-				.withString("Password", hashPassword(request.getPassword()))
-				.withString("PhoneNumber", request.getPhoneNumber())
-				.withString("WeChatId", request.getWeChatId())));
-		
-		
+
+		if (code != 409) {
+			userId = getUserId();
+			table.putItem(new PutItemSpec().withItem(new Item().withString("CreateTime|Random", userId)
+					.withString("Email", request.getEmail()).withString("Username", request.getUsername())
+					.withString("Password", hashPassword(request.getPassword()))
+					.withString("PhoneNumber", request.getPhoneNumber())
+					.withString("WeChatId", request.getWeChatId())));
+		}
+
 		UserRegisterResponse response = new UserRegisterResponse();
 		response.setStatusCode(code);
 		response.setMessage(message);
@@ -72,7 +70,7 @@ public class UserRegisterHandler implements RequestHandler<UserRegisterRequest, 
 	private String hashPassword(String plainTextPassword) {
 		return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
 	}
-	
+
 	private String getUserId() {
 		return System.currentTimeMillis() + "|" + new Random().nextInt(1000);
 	}
