@@ -1,15 +1,6 @@
 package com.wjc.main;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.mindrot.jbcrypt.BCrypt;
-
-import com.google.gson.Gson;
-import com.wjc.model.PathLine;
-import com.wjc.model.Rental;
-import com.wjc.model.SubwayLine;
-import com.wjc.request.RentalNewRequest;
 
 public class Main {
 

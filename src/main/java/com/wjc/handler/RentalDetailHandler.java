@@ -9,6 +9,9 @@ import java.util.Map;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.constant.RentalType;
+import com.wjc.model.RentalDetailTransportation;
+import com.wjc.model.Transportation;
+import com.wjc.model.TransportationSegment;
 import com.wjc.request.RentalDetailRequest;
 import com.wjc.response.RentalDetailResponse;
 
@@ -46,7 +49,27 @@ public class RentalDetailHandler implements RequestHandler<RentalDetailRequest, 
 		return new RentalDetailResponse.Builder().imageUrls(imageUrls).availableStartDate(1550188800)
 				.availableEndDate(1561161600).title("位于皇后高地区的精装公寓").description(description)
 				.prices(prices).basicFeatures(basicFeatures).highlights(highlights).moreHighlights(moreHighlights)
-				.transportation(transpotation).statusCode(200).message("no exception").build();
+				.transportations(getTransporations()).statusCode(200).message("Succeeded").build();
+	}
+	
+	private RentalDetailTransportation getTransporations() {
+		TransportationSegment segment1 = new TransportationSegment("地铁线路D", "13分钟步行距离至 Brighton Beach");
+		TransportationSegment segment2 = new TransportationSegment("Line D", "13 minutes' walk to Brighton Beach");
+		Transportation subway = new Transportation();
+		subway.setZhHans(segment1);
+		subway.setEn(segment2);
+		
+		TransportationSegment segment3 = new TransportationSegment("Path", "5分钟步行距离至 Chinatown");
+		TransportationSegment segment4 = new TransportationSegment("Path", "5 minutes' walk to Chinatown");
+		Transportation path = new Transportation();
+		path.setZhHans(segment3);
+		path.setEn(segment4);
+		
+		RentalDetailTransportation transportations = new RentalDetailTransportation();
+		transportations.setSubway(subway);
+		transportations.setPath(path);
+		
+		return transportations;
 	}
 
 }

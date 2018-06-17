@@ -3,6 +3,8 @@ package com.wjc.response;
 import java.util.List;
 import java.util.Map;
 
+import com.wjc.model.RentalDetailTransportation;
+
 public final class RentalDetailResponse {
 
 	private List<String> imageUrls;
@@ -21,7 +23,7 @@ public final class RentalDetailResponse {
 	// One row for subway, no matter how many lines (A/B/C/1) we have
 	// One possible row for Path
 	// One possible row for train
-	private Map<String, String> transportation;
+	private RentalDetailTransportation transportations;
 
 	public List<String> getImageUrls() {
 		return imageUrls;
@@ -119,12 +121,12 @@ public final class RentalDetailResponse {
 		this.message = message;
 	}
 
-	public Map<String, String> getTransportation() {
-		return transportation;
+	public RentalDetailTransportation getTransportations() {
+		return transportations;
 	}
 
-	public void setTransportation(Map<String, String> transportation) {
-		this.transportation = transportation;
+	public void setTransportations(RentalDetailTransportation transportations) {
+		this.transportations = transportations;
 	}
 
 	public static class Builder {
@@ -140,7 +142,7 @@ public final class RentalDetailResponse {
 		private List<String> moreHighlights;
 		private int statusCode;
 		private String message;
-		private Map<String, String> transportation;
+		private RentalDetailTransportation transportations;
 
 		public Builder imageUrls(List<String> imageUrls) {
 			this.imageUrls = imageUrls;
@@ -202,8 +204,8 @@ public final class RentalDetailResponse {
 			return this;
 		}
 
-		public Builder transportation(Map<String, String> transportation) {
-			this.transportation = transportation;
+		public Builder transportations(RentalDetailTransportation transportations) {
+			this.transportations = transportations;
 			return this;
 		}
 
@@ -225,6 +227,6 @@ public final class RentalDetailResponse {
 		this.moreHighlights = builder.moreHighlights;
 		this.statusCode = builder.statusCode;
 		this.message = builder.message;
-		this.transportation = builder.transportation;
+		this.transportations = builder.transportations;
 	}
 }
