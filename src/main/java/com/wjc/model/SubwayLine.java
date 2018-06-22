@@ -6,6 +6,9 @@ public class SubwayLine {
 	private int time;
 	private int timeUnit;
 	private String station;
+	
+	public SubwayLine() {
+	}
 
 	public String getLine() {
 		return line;

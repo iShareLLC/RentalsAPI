@@ -6,6 +6,9 @@ public class PathLine {
 	private int time;
 	private int timeUnit;
 	private String station;
+	
+	public PathLine() {
+	}
 
 	public String getLine() {
 		return line;

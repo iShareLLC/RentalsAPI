@@ -11,6 +11,9 @@ public class Rental {
 	private long startDate;
 	private int duration;
 	private int durationUnit;
+	
+	public Rental() {
+	}
 
 	public int getRentalType() {
 		return rentalType;

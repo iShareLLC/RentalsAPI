@@ -23,6 +23,9 @@ public class RentalNewRequest {
 	// todo: need to figure out this. Possible upload image in binary form
 //	private List<String> images;
 	private String otherInfo;
+	
+	public RentalNewRequest() {
+	}
 
 	public String getBorough() {
 		return borough;

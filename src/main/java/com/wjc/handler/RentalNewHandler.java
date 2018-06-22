@@ -5,6 +5,9 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.wjc.request.RentalNewRequest;
 import com.wjc.response.RentalNewResponse;
 
+/**
+ * @author jiechao
+ */
 public class RentalNewHandler implements RequestHandler <RentalNewRequest, RentalNewResponse>{
 
 	@Override
